@@ -3,8 +3,8 @@ project (Physics)
 # The version nmber.
 set (Physics_VERSION_MAJOR 0)
 set (Physics_VERSION_MINOR 0)
-set (CXX_STANDARD 11)
-set (CXX_STANDARD_REQUIRED ON)
+set (CMAKE_CXX_STANDARD 11)
+set (CMAKE_CXX_STANDARD_REQUIRED ON)
 set (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
@@ -21,8 +21,8 @@ configure_file (
 include_directories("${PROJECT_BINARY_DIR}")
 include_directories("${PROJECT_SOURCE_DIR}/src")
 
-add_library(Physics src/vector3.cpp src/rectangle.cpp src/line.cpp)
+add_library(libphysics src/vector3.cpp src/rectangle.cpp src/line.cpp)
 
 # add the executable
 add_executable(Test test.cpp)
-target_link_libraries(Test Physics)
+target_link_libraries(Test libphysics)
