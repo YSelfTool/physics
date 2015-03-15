@@ -21,7 +21,7 @@ configure_file (
 include_directories("${PROJECT_BINARY_DIR}")
 include_directories("${PROJECT_SOURCE_DIR}/src")
 
-add_library(libphysics src/vector3.cpp src/rectangle.cpp src/line.cpp)
+add_library(libphysics src/vector3.cpp src/rectangle.cpp src/line.cpp src/collider.cpp)
 
 # add the executable
 add_executable(Test test.cpp)
