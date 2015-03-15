@@ -174,22 +174,22 @@ bool Vector3::isorthogonal(const Vector3& vector) const {
     return ((*this) * vector) == 0;
 }
 
-static Vector3 Vector3::zero() const {
+Vector3 Vector3::zero() {
     return Vector3(0.0f, 0.0f, 0.0f);
 }
 
-static Vector3 Vector3::unitx() const {
+Vector3 Vector3::unitx() {
     return Vector3(1.0f, 0.0f, 0.0f);
 }
 
-static Vector3 Vector3::unity() const {
+Vector3 Vector3::unity() {
     return Vector3(0.0f, 1.0f, 0.0f);
 }
 
-static Vector3 Vector3::unitz() const {
+Vector3 Vector3::unitz() {
     return Vector3(0.0f, 0.0f, 1.0f);
 }
 
-static Vector3 Vector3::infinity() const {
+Vector3 Vector3::infinity() {
     return Vector3(INFINITY, INFINITY, INFINITY);
 }

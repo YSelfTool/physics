@@ -53,9 +53,9 @@ class Vector3 {
     bool isparallel(const Vector3& vector) const;
     bool isorthogonal(const Vector3& vector) const;
     
-    static Vector3 zero() const;
-    static Vector3 unitx() const;
-    static Vector3 unity() const;
-    static Vector3 unitz() const;
-    static Vector3 infinity() const;
+    static Vector3 zero();
+    static Vector3 unitx();
+    static Vector3 unity();
+    static Vector3 unitz();
+    static Vector3 infinity();
 };

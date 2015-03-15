@@ -27,11 +27,11 @@ Vector3& Line::direction() {
 }
 
 Vector3 Line::getpoint() const {
-    return this->_point();
+    return this->_point;
 }
 
 Vector3 Line::getdirection() const {
-    return this->_direction();
+    return this->_direction;
 }
 
 Vector3 Line::pointonline(float param) const {
