@@ -1,0 +1,3 @@
+// the configured options and settings for Physics
+#define Physics_VERSION_MAJOR @Physics_VERSION_MAJOR@
+#define Physics_VERSION_MINOR @Physics_VERSION_MINOR@
