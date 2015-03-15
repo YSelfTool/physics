@@ -1,11 +1,11 @@
 #include "vector3.hpp"
 #include <cmath>
 
-Vector3::Vector3() : _x(0.0), _y(0.0), _z(0.0) {
+Vector3::Vector3() : _x(0.0f), _y(0.0f), _z(0.0f) {
     
 }
 
-Vector3::Vector3(float x, float y, float z) : _x(x), _y(y), _z(z) {
+Vector3::Vector3(const float x, const float y, const float z) : _x(x), _y(y), _z(z) {
     
 }
 
@@ -120,8 +120,8 @@ float Vector3::operator*(const Vector3& vector) const {
 
 Vector3 Vector3::cross(const Vector3& vector) const {
     return Vector3(this->gety() * vector.getz() - this->getz() * vector.gety(),
-        this.getz() * vector.getx() - this.getz() * vector.getx(),
-        this.getx() * vector.gety() - this.gety() * vector.getx());
+        this->getz() * vector.getx() - this->getz() * vector.getx(),
+        this->getx() * vector.gety() - this->gety() * vector.getx());
 }
 
 float Vector3::normsquare() const {
@@ -130,6 +130,10 @@ float Vector3::normsquare() const {
 
 float Vector3::norm() const {
     return std::sqrt(this->normsquare());
+}
+
+Vector3 Vector3::normalize() const {
+    return (*this) / this->norm();
 }
 
 bool Vector3::operator==(const Vector3& vector) const {
@@ -158,3 +162,34 @@ bool Vector3::operator>=(const Vector3& vector) const {
     return this->normsquare() >= vector.normsquare();
 }
 
+bool Vector3::iszero() const {
+    return (this->getx() == 0.0f) && (this->gety() == 0.0f) && (this->getz() == 0.0f);
+}
+
+bool Vector3::isparallel(const Vector3& vector) const {
+    return std::abs((*this).normalize() * vector.normalize()) == 1;
+}
+
+bool Vector3::isorthogonal(const Vector3& vector) const {
+    return ((*this) * vector) == 0;
+}
+
+static Vector3 Vector3::zero() const {
+    return Vector3(0.0f, 0.0f, 0.0f);
+}
+
+static Vector3 Vector3::unitx() const {
+    return Vector3(1.0f, 0.0f, 0.0f);
+}
+
+static Vector3 Vector3::unity() const {
+    return Vector3(0.0f, 1.0f, 0.0f);
+}
+
+static Vector3 Vector3::unitz() const {
+    return Vector3(0.0f, 0.0f, 1.0f);
+}
+
+static Vector3 Vector3::infinity() const {
+    return Vector3(INFINITY, INFINITY, INFINITY);
+}

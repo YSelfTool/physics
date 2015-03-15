@@ -6,7 +6,7 @@ class Vector3 {
     
     public:
     Vector3();
-    Vector3(float x, float y, float z);
+    Vector3(const float x, const float y, const float z);
     Vector3(const Vector3& vector);
     
     ~Vector3();
@@ -40,6 +40,7 @@ class Vector3 {
     
     float norm() const;
     float normsquare() const;
+    Vector3 normalize() const;
     
     bool operator==(const Vector3& vector) const;
     bool operator!=(const Vector3& vector) const;
@@ -47,4 +48,14 @@ class Vector3 {
     bool operator>(const Vector3& vector) const;
     bool operator<=(const Vector3& vector) const;
     bool operator>=(const Vector3& vector) const;
+    
+    bool iszero() const;
+    bool isparallel(const Vector3& vector) const;
+    bool isorthogonal(const Vector3& vector) const;
+    
+    static Vector3 zero() const;
+    static Vector3 unitx() const;
+    static Vector3 unity() const;
+    static Vector3 unitz() const;
+    static Vector3 infinity() const;
 };

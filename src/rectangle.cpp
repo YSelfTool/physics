@@ -74,6 +74,6 @@ std::pair<float, float> Rectangle::getintersectionpointparams(const Line& line) 
 
 bool Rectangle::isintersectionpointinrectangle(const Line& line) const {
     std::pair<float, float> params = this->getintersectionpointparams(line);
-    return (0 <= params.first() && params.first() <= 1 && 
-        0 <= params.second() && params.second() <= 1);
+    return (0 <= params.first && params.first <= 1 && 
+        0 <= params.second && params.second <= 1);
 }
