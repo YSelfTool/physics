@@ -9,6 +9,7 @@ class Rectangle {
     Vector3 _direction1, _direction2;
     
     std::pair<float, float> getintersectionpointparams(const Line& line) const;
+    std::pair<float, float> closestparams(const Vector3& point) const;
     
     public:
     Rectangle();
@@ -27,7 +28,12 @@ class Rectangle {
     Vector3 getdirection1() const;
     Vector3 getdirection2() const;
     
+    Vector3 point(float param1, float param2) const;
+    
     Vector3 normal() const;
+    
+    Vector3 closest(const Vector3& point) const;
+    float distance(const Vector3& point) const;
     
     Vector3 getintersectionpoint(const Line& line) const;
     bool isintersectionpointinrectangle(const Line& line) const;

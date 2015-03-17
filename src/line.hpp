@@ -6,6 +6,8 @@ class Line {
     Vector3 _point;
     Vector3 _direction;
     
+    float closestparam(const Vector3& point) const;
+    
     public:
     Line();
     Line(const Vector3& point, const Vector3& direction);
@@ -19,6 +21,9 @@ class Line {
     Vector3 getpoint() const;
     Vector3 getdirection() const;
     
-    Vector3 pointonline(float param) const;
+    Vector3 point(const float param) const;
+    
+    Vector3 closest(const Vector3& point) const;
+    float distance(const Vector3& point) const;
     
 };

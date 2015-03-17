@@ -52,8 +52,31 @@ Vector3 Rectangle::getdirection2() const {
     return this->_direction2;
 }
 
+Vector3 Rectangle::point(float param1, float param2) const {
+    return this->getpoint() + this->getdirection1() * param1
+        + this->getdirection2() * param2;
+}
+
 Vector3 Rectangle::normal() const {
     return this->getdirection1().cross(this->getdirection2());
+}
+
+std::pair<float, float> closestparams(const Vector3& point) const {
+    Vector3 a = this->getpoint(), b = this->getdirection1(), c = this->getdirection2();
+    Vector3 p = point;
+    float u = (a*b - b*p + b.normsquare()/(b*c)*(p*c - a*c)) / 
+        ((b.normsquare()*c.normsquare())/(b*c) - b*c);
+    float t = (p*c - u*c.normsquare() - a*c) / (b*c);
+    return std::pair<float, float>(t, u);
+}
+
+Vector3 Rectangle::closest(const Vector3& point) const {
+    std::pair<float, float> params = this->closestparams(point);
+    return this->point(params.first, params.second);
+}
+
+float Rectangle::distance(Point point) const {
+    return (point - this->closest(point)).norm();
 }
 
 Vector3 Rectangle::getintersectionpoint(const Line& line) const {

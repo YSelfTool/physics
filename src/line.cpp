@@ -34,6 +34,19 @@ Vector3 Line::getdirection() const {
     return this->_direction;
 }
 
-Vector3 Line::pointonline(float param) const {
+Vector3 Line::point(const float param) const {
     return this->getpoint() + this->getdirection() * param;
+}
+    
+float Line::closestparam(const Vector3& point) const {
+    return (this->getpoint() - point) * this->getdirection() 
+        / this->getdirection().normsquare();
+}
+
+Vector3 Line::closest(const Vector3& point) const {
+    return this->point(this->closestparam(point));
+}
+
+float Line::distance(const Vector3& point) const {
+    return (this->closest(point) - point).norm();
 }
