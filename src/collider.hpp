@@ -1,5 +1,6 @@
 #pragma once
 #include "vector3.hpp"
+#include "collidertype.hpp"
 
 class Collider {
     private:
@@ -12,9 +13,13 @@ class Collider {
     virtual bool testcontains(const Collider& collider) const = 0;
     virtual bool testintersects(const Collider& collider) const = 0;
     
+    Vector3 distantpoint() const;
+    
     public:
     Collider();
-    ~Collider();
+    virtual ~Collider();
+    
+    virtual ColliderType type() const = 0;
     
     bool contains(const Vector3& point) const;
     bool contains(const Collider& collider) const;

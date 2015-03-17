@@ -193,3 +193,12 @@ Vector3 Vector3::unitz() {
 Vector3 Vector3::infinity() {
     return Vector3(INFINITY, INFINITY, INFINITY);
 }
+
+Vector3 operator*(const float scalar, const Vector3& vector) {
+    return vector * scalar;
+}
+
+std::ostream& operator<<(std::ostream& stream, const Vector3& vector) {
+    stream << "(" << vector.getx() << ", " << vector.gety() << ", " << vector.getz() << ")";
+    return stream;
+}

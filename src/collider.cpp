@@ -35,3 +35,7 @@ bool Collider::intersects(const Collider& collider) const {
     }
     return this->testintersects(collider);
 }
+
+Vector3 Collider::distantpoint() const {
+    return this->center() + 10 * this->maxradius() * Vector3::unitx();
+}

@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 class Vector3 {
     private:
@@ -58,4 +59,9 @@ class Vector3 {
     static Vector3 unity();
     static Vector3 unitz();
     static Vector3 infinity();
+    
 };
+
+Vector3 operator*(const float scalar, const Vector3& vector);
+
+std::ostream& operator<<(std::ostream& stream, const Vector3& vector);

@@ -1,7 +1,15 @@
 #include "PhysicsConfig.hpp"
 #include "vector3.hpp"
+#include "cuboidcollider.hpp"
+#include <vector>
+#include <iostream>
 
 int main() {
-    Vector3 v(1, 2, 3);
-    Vector3 v2(v);
+    CuboidCollider coll;
+    std::vector<Vector3> corners = coll.corners();
+    for (std::vector<Vector3>::iterator iter = corners.begin();
+        iter != corners.end(); iter++) {
+        std::cout << *iter << std::endl;
+    }
+    
 }
