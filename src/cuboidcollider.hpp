@@ -50,6 +50,8 @@ class CuboidCollider : public Collider {
     
     virtual ColliderType type() const;
     
+    virtual std::vector<Vector3> points(const unsigned int order) const;
+    
     Vector3 corner111() const;
     Vector3 corner112() const;
     Vector3 corner121() const;

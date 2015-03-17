@@ -1,6 +1,7 @@
 #pragma once
 #include "vector3.hpp"
 #include "collidertype.hpp"
+#include <vector>
 
 class Collider {
     private:
@@ -24,5 +25,7 @@ class Collider {
     bool contains(const Vector3& point) const;
     bool contains(const Collider& collider) const;
     bool intersects(const Collider& collider) const;
+    
+    virtual std::vector<Vector3> points(const unsigned int order) const = 0;
     
 };

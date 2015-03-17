@@ -284,6 +284,22 @@ bool CuboidCollider::testintersectscuboid(const CuboidCollider& collider) const 
     return false;
 }
 
+std::vector<Vector3> CuboidCollider::points(const unsigned int order) const {
+    std::vector<Vector3> arr;
+    arr.reserve((order+1) * (order+1) * (order+1));
+    Vector3 vec0 = this->getpoint();
+    for (unsigned int c1 = 0; c1 <= order; c1++) {
+        Vector3 vec1 = vec0 + (((float)c1)/order) * this->getdirection1();
+        for (unsigned int c2 = 0; c2 <= order; c2++) {
+            Vector3 vec2 = vec1 + (((float)c2)/order) * this->getdirection2();
+            for (unsigned int c3 = 0; c3 <= order; c3++) {
+                arr.push_back(vec2 + (((float)c3)/order) * this->getdirection3());
+            }
+        }
+    }
+    return arr;
+}
+
 std::ostream& operator<<(std::ostream& stream, const CuboidCollider& collider) {
     stream << "cuboid from " << collider.getpoint() << ", -> " << collider.getdirection1()
         << ", -> " << collider.getdirection2() << ", -> " << collider.getdirection3();
