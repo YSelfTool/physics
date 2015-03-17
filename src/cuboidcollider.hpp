@@ -1,5 +1,6 @@
 #pragma once
 #include "collider.hpp"
+#include "spherecollider.hpp"
 #include "vector3.hpp"
 #include "rectangle.hpp"
 #include "line.hpp"
@@ -11,10 +12,12 @@ class CuboidCollider : public Collider {
     Vector3 _direction1, _direction2, _direction3;
     
     bool testcontainscuboid(const CuboidCollider& collider) const;
+    bool testcontainssphere(const SphereCollider& collider) const;
+    
     bool testintersectscuboid(const CuboidCollider& collider) const;
     
     protected:
-    virtual Vector3 center() const;
+    virtual Vector3 maxcenter() const;
     virtual float maxradius() const;
     
     virtual bool testcontains(const Vector3& point) const;

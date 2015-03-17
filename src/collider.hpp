@@ -6,7 +6,7 @@ class Collider {
     private:
     
     protected:
-    virtual Vector3 center() const = 0;
+    virtual Vector3 maxcenter() const = 0;
     virtual float maxradius() const = 0;
     
     virtual bool testcontains(const Vector3& point) const = 0;

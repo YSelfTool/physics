@@ -9,7 +9,7 @@ Collider::~Collider() {
 }
 
 bool Collider::contains(const Vector3& point) const {
-    if ((this->center() - point).normsquare() > 
+    if ((this->maxcenter() - point).normsquare() > 
         (this->maxradius() * this->maxradius())) {
         return false;
     }
@@ -19,7 +19,7 @@ bool Collider::contains(const Vector3& point) const {
 bool Collider::contains(const Collider& collider) const {
     float tmr = this->maxradius();
     float cmr = collider.maxradius();
-    if ((this->center() - collider.center()).normsquare() > 
+    if ((this->maxcenter() - collider.maxcenter()).normsquare() > 
         (tmr+cmr) * (tmr+cmr)) {
         return false;
     }
@@ -29,7 +29,7 @@ bool Collider::contains(const Collider& collider) const {
 bool Collider::intersects(const Collider& collider) const {
     float tmr = this->maxradius();
     float cmr = collider.maxradius();
-    if ((this->center() - collider.center()).normsquare() > 
+    if ((this->maxcenter() - collider.maxcenter()).normsquare() > 
         (tmr+cmr) * (tmr+cmr)) {
         return false;
     }
@@ -37,5 +37,5 @@ bool Collider::intersects(const Collider& collider) const {
 }
 
 Vector3 Collider::distantpoint() const {
-    return this->center() + 10 * this->maxradius() * Vector3::unitx();
+    return this->maxcenter() + 10 * this->maxradius() * Vector3::unitx();
 }

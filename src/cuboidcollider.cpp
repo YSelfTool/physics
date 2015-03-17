@@ -72,7 +72,7 @@ ColliderType CuboidCollider::type() const {
     return CuboidColliderType;
 }
 
-Vector3 CuboidCollider::center() const {
+Vector3 CuboidCollider::maxcenter() const {
     return this->getpoint() + 0.5 * this->getdirection1() + 0.5 * this->getdirection2() 
         + 0.5 * getdirection3();
 }
@@ -221,6 +221,8 @@ bool CuboidCollider::testcontains(const Collider& collider) const {
     switch (collider.type()) {
         case CuboidColliderType:
             return this->testcontainscuboid(static_cast<const CuboidCollider&>(collider));
+        case SphereColliderType:
+            return this->testcontainssphere(static_cast<const SphereCollider&>(collider));
         default:
             throw NotImplementedException("Unknown Collider Type");
     }
@@ -237,10 +239,27 @@ bool CuboidCollider::testcontainscuboid(const CuboidCollider& collider) const {
     return true;
 }
 
+bool CuboidCollider::testcontainssphere(const SphereCollider& collider) const {
+    if (!(this->contains(collider.getcenter()))) {
+        return false;
+    }
+    std::vector<Rectangle> faces = this->faces();
+    for (std::vector<Rectangle>::iterator face = faces.begin();
+        face != faces.end(); face++) {
+        if (face->distance(collider.getcenter()) < collider.getradius()) {
+            return false;
+        }
+    }
+    return true;
+}
+
 bool CuboidCollider::testintersects(const Collider& collider) const {
     switch(collider.type()) {
         case CuboidColliderType:
-            return this->testintersectscuboid(static_cast<const CuboidCollider&>(collider));
+            return this->testintersectscuboid(
+                static_cast<const CuboidCollider&>(collider));
+        case SphereColliderType:
+            return collider.intersects(*this);
         default:
             throw NotImplementedException("Unknown Collider Type");
     }
