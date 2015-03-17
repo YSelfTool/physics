@@ -125,7 +125,7 @@ std::vector<Vector3> SphereCollider::points(const unsigned int order) const {
                         x3 = ((float)c3) / order;
                     arr.push_back(Vector3(2 * r * x2 * std::sqrt(1 - x2*x2 - x3*x3),
                         2 * r * x3 * std::sqrt(1 - x2*x2 - x3*x3),
-                        r * (1 - 2 * (x1*x1 + x2*x2))));
+                        r * (1 - 2 * (x2*x2 + x3*x3))));
                 }
                 
             }
