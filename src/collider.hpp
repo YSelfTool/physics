@@ -25,5 +25,4 @@ class Collider {
     bool contains(const Collider& collider) const;
     bool intersects(const Collider& collider) const;
     
-    
 };

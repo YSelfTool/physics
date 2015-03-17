@@ -37,3 +37,5 @@ class SphereCollider : public Collider {
     
     virtual ColliderType type() const;
 };
+
+std::ostream& operator<<(std::ostream& stream, const SphereCollider& collider);

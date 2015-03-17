@@ -283,3 +283,9 @@ bool CuboidCollider::testintersectscuboid(const CuboidCollider& collider) const 
     }
     return false;
 }
+
+std::ostream& operator<<(std::ostream& stream, const CuboidCollider& collider) {
+    stream << "cuboid from " << collider.getpoint() << ", -> " << collider.getdirection1()
+        << ", -> " << collider.getdirection2() << ", -> " << collider.getdirection3();
+    return stream;
+}

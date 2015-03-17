@@ -109,3 +109,8 @@ bool SphereCollider::testintersectscuboid(const CuboidCollider& collider) const 
     }
     return false;
 }
+
+std::ostream& operator<<(std::ostream& stream, const SphereCollider& collider) {
+    stream << "sphere around " << collider.getcenter() << ", r=" << collider.getradius();
+    return stream;
+}

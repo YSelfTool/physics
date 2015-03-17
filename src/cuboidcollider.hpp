@@ -86,3 +86,5 @@ class CuboidCollider : public Collider {
     std::vector<Rectangle> faces() const;
     
 };
+
+std::ostream& operator<<(std::ostream& stream, const CuboidCollider& collider);
