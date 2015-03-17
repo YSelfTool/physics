@@ -72,7 +72,10 @@ std::pair<float, float> closestparams(const Vector3& point) const {
 
 Vector3 Rectangle::closest(const Vector3& point) const {
     std::pair<float, float> params = this->closestparams(point);
-    return this->point(params.first, params.second);
+    std::pair<float, float> paramsinside = std::pair<float, float>(
+        (params.first > 0) ? ((params.first < 1) ? params.first : 1) : 0,
+        (params.second > 0) ? ((params.second < 1) ? params.second : 1) : 0);
+    return this->point(paramsinside.first, paramsinside.second);
 }
 
 float Rectangle::distance(Point point) const {

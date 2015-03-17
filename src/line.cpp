@@ -44,7 +44,9 @@ float Line::closestparam(const Vector3& point) const {
 }
 
 Vector3 Line::closest(const Vector3& point) const {
-    return this->point(this->closestparam(point));
+    float param = this->closestparam(point);
+    float paraminside = (0 < param) ? ((param < 1) ? param : 1) : 0;
+    return this->point(paraminside);
 }
 
 float Line::distance(const Vector3& point) const {
