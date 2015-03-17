@@ -1,4 +1,5 @@
 #include "cuboidcollider.hpp"
+#include "spherecollider.cpp"
 #include "notimplementedexception.hpp"
 
 CuboidCollider::CuboidCollider() : _point(Vector3::zero()), 

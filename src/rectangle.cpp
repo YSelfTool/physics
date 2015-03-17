@@ -61,7 +61,7 @@ Vector3 Rectangle::normal() const {
     return this->getdirection1().cross(this->getdirection2());
 }
 
-std::pair<float, float> closestparams(const Vector3& point) const {
+std::pair<float, float> Rectangle::closestparams(const Vector3& point) const {
     Vector3 a = this->getpoint(), b = this->getdirection1(), c = this->getdirection2();
     Vector3 p = point;
     float u = (a*b - b*p + b.normsquare()/(b*c)*(p*c - a*c)) / 
@@ -78,7 +78,7 @@ Vector3 Rectangle::closest(const Vector3& point) const {
     return this->point(paramsinside.first, paramsinside.second);
 }
 
-float Rectangle::distance(Point point) const {
+float Rectangle::distance(const Vector3& point) const {
     return (point - this->closest(point)).norm();
 }
 

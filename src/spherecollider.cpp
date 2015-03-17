@@ -1,4 +1,5 @@
 #include "spherecollider.hpp"
+#include "cuboidcollider.hpp"
 #include "notimplementedexception.hpp"
 #include <vector>
 
@@ -37,6 +38,10 @@ ColliderType SphereCollider::type() const {
 
 Vector3 SphereCollider::maxcenter() const {
     return this->getcenter();
+}
+
+float SphereCollider::maxradius() const {
+    return this->getradius();
 }
 
 bool SphereCollider::testcontains(const Vector3& point) const {

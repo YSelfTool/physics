@@ -1,10 +1,11 @@
 #pragma once
 #include "collider.hpp"
-#include "spherecollider.hpp"
 #include "vector3.hpp"
 #include "rectangle.hpp"
 #include "line.hpp"
 #include <vector>
+
+class SphereCollider;
 
 class CuboidCollider : public Collider {
     private:

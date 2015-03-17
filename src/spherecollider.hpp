@@ -1,7 +1,8 @@
 #pragma once
 #include "collider.hpp"
-#include "cuboidcollider.hpp"
 #include "vector3.hpp"
+
+class CuboidCollider;
 
 class SphereCollider : public Collider {
     private:
@@ -35,4 +36,4 @@ class SphereCollider : public Collider {
     float getradius() const;
     
     virtual ColliderType type() const;
-}
+};

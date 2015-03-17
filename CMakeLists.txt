@@ -21,7 +21,7 @@ configure_file (
 include_directories("${PROJECT_BINARY_DIR}")
 include_directories("${PROJECT_SOURCE_DIR}/src")
 
-add_library(physics src/vector3.cpp src/rectangle.cpp src/line.cpp src/collider.cpp src/cuboidcollider.cpp src/notimplementedexception.cpp)
+add_library(physics src/vector3.cpp src/rectangle.cpp src/line.cpp src/collider.cpp src/cuboidcollider.cpp src/notimplementedexception.cpp src/spherecollider.cpp)
 
 # add the executable
 add_executable(Test test.cpp)
