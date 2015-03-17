@@ -1,0 +1,7 @@
+bin/
+*.swp
+CMakeCache.txt
+cmake_install.cmake
+CMakeFiles/
+Makefile
+src/PhysicsConfig.hpp
