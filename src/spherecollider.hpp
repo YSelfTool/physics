@@ -38,7 +38,7 @@ class SphereCollider : public Collider {
     
     virtual ColliderType type() const;
     
-    virtual std::vector<Vector3> points(const unsigned int order) const;
+    virtual std::vector<Vector3> points(const int order) const;
 };
 
 std::ostream& operator<<(std::ostream& stream, const SphereCollider& collider);

@@ -26,6 +26,6 @@ class Collider {
     bool contains(const Collider& collider) const;
     bool intersects(const Collider& collider) const;
     
-    virtual std::vector<Vector3> points(const unsigned int order) const = 0;
+    virtual std::vector<Vector3> points(const int order) const = 0;
     
 };

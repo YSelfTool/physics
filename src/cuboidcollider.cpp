@@ -284,7 +284,7 @@ bool CuboidCollider::testintersectscuboid(const CuboidCollider& collider) const 
     return false;
 }
 
-std::vector<Vector3> CuboidCollider::points(const unsigned int order) const {
+std::vector<Vector3> CuboidCollider::points(const int order) const {
     std::vector<Vector3> arr;
     arr.reserve((order+1) * (order+1) * (order+1));
     Vector3 vec0 = this->getpoint();

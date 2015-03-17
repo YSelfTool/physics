@@ -111,19 +111,18 @@ bool SphereCollider::testintersectscuboid(const CuboidCollider& collider) const 
     return false;
 }
 
-std::vector<Vector3> SphereCollider::points(const unsigned int order) const {
+std::vector<Vector3> SphereCollider::points(const int order) const {
     std::vector<Vector3> arr;
     arr.reserve(4 * (order+1) * order * order);
     Vector3 c = this->getcenter();
-    for (unsigned int c1 = 0; c1 < order; c1++) {
+    for (int c1 = 0; c1 <= order; c1++) {
         float r = this->getradius() * std::cbrt(((float)c1)/order);
-        for (unsigned int c2 = -order; c2 < order; c2++) {
-            
-            for (unsigned int c3 = -order; c3 <= order; c3++) {
+        for (int c2 = -order+1; c2 < order; c2++) {
+            for (int c3 = -order+1; c3 < order; c3++) {
                 if (c2*c2 + c3*c3 < order*order) {
                     float x2 = ((float)c2) / order,
                         x3 = ((float)c3) / order;
-                    arr.push_back(Vector3(2 * r * x2 * std::sqrt(1 - x2*x2 - x3*x3),
+                    arr.push_back(c + Vector3(2 * r * x2 * std::sqrt(1 - x2*x2 - x3*x3),
                         2 * r * x3 * std::sqrt(1 - x2*x2 - x3*x3),
                         r * (1 - 2 * (x2*x2 + x3*x3))));
                 }
